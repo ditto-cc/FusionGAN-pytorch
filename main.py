@@ -1,8 +1,10 @@
 # coding: utf-8
+from train import CGAN
 
 
-def main():
-    pass
+def main(config):
+    model = CGAN(config)
+    model.train()
 
 
 if __name__ == '__main__':
@@ -16,12 +18,13 @@ if __name__ == '__main__':
         c_dim=1,
         scale=3,
         stride=14,
-        chpt_dir='ckpt',
+        ckpt_dir='ckpt',
         sample_dir='sample',
         summary_dir='summary',
-        is_train=True
+        is_train=True,
+
+        epsilon=5.0,
+        lda=100,
     )
 
-
-
-    pass
+    main(config)
