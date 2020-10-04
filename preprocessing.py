@@ -72,3 +72,10 @@ def get_images2(data_dir, image_size, label_size, stride):
     sub_input_sequence = np.asarray(sub_input_sequence, dtype=np.float32)
     sub_label_sequence = np.asarray(sub_label_sequence, dtype=np.float32)
     return sub_input_sequence, sub_label_sequence
+
+
+def imread(path):
+    img = cv2.imread(path)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
+    # img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    return img[:, :, 0]
