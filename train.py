@@ -114,7 +114,7 @@ class CGAN:
                         vis_x = torch.tensor(vis_x).float().to(device)
                         vis_y = torch.tensor(vis_y).float().to(device)
 
-                        d_loss, g_loss = self.train_step(vis_x, inf_x, vis_y, inf_y)
+                        d_loss, g_loss = self.train_step(vis_x, inf_x, vis_y, inf_y, 2)
                         d_loss_mean += d_loss
                         g_loss_mean += g_loss
                         print('Epoch {}/{}, Step {}/{}, gen loss = {:.4f}, dis loss = {:.4f}'.format(epoch + 1, epochs,

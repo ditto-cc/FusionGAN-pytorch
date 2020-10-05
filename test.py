@@ -32,11 +32,13 @@ def input_setup2(data_vi, data_ir, index):
     sub_vi_sequence = []
     _ir = imread(data_ir[index])
     _vi = imread(data_vi[index])
-    input_ir = (_ir - 127.5) / 127.5
+    # input_ir = (_ir - 127.5) / 127.5
+    input_ir = _ir / 255
     input_ir = np.pad(input_ir, ((padding, padding), (padding, padding)), 'edge')
     w, h = input_ir.shape
     input_ir = input_ir.reshape([w, h, 1])
-    input_vi = (_vi - 127.5) / 127.5
+    # input_vi = (_vi - 127.5) / 127.5
+    input_vi = _vi / 255
     input_vi = np.pad(input_vi, ((padding, padding), (padding, padding)), 'edge')
     w, h = input_vi.shape
     input_vi = input_vi.reshape([w, h, 1])
@@ -82,8 +84,8 @@ def test_all(g=None, path=os.path.join(os.getcwd(), 'output', 'result'), data='d
 
             result = g(train_data_ir, train_data_vi)
             result = np.squeeze(result.cpu().numpy() * 127.5 + 127.5).astype(np.uint8)
-            # clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
-            # result = clahe.apply(result)
+            clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+            result = clahe.apply(result)
             save_path = os.path.join(path, str(i + 1) + ".bmp")
             end = time.time()
             #
