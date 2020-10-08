@@ -1,5 +1,5 @@
 # coding: utf-8
-
+import imageio
 import torch
 
 import os
@@ -56,7 +56,7 @@ def imread(path):
 
 
 def imsave(image, path):
-    return scipy.misc.imsave(path, image)
+    return imageio.imwrite(path, image)
 
 
 def test_all(g=None, path=os.path.join(os.getcwd(), 'output', 'result'), data='data'):
