@@ -59,7 +59,7 @@ def get_images2(data_dir, image_size, label_size, stride):
     for i in range(len(data)):
         input_ = cv2.cvtColor(cv2.imread(data[i]), cv2.COLOR_BGR2RGB)
         input_ = im2double(input_)
-        input_, v1, v2 = rgb2ihs(input_)
+        # input_, v1, v2 = rgb2ihs(input_)
         height, width = input_.shape[:2]
         for x in range(0, height - image_size + 1, stride):
             for y in range(0, width - image_size + 1, stride):
