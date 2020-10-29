@@ -6,12 +6,8 @@ import os
 
 import glob
 import time
-import numpy as np
-import matplotlib.pyplot as plt
-import scipy.misc
-import scipy.ndimage
+
 from model import G
-from preprocessing import imread
 import cv2
 from metric import *
 

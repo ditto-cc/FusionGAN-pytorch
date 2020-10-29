@@ -74,7 +74,11 @@ class CGAN:
                                                                   self.config['label_size'], self.config['stride'])
         train_data_vi, train_label_vi = preprocessing.get_images2(data_dir_vi, self.config['image_size'],
                                                                   self.config['label_size'], self.config['stride'])
-
+        random_index = torch.randperm(len(train_data_ir))
+        train_data_vi = train_data_vi[random_index]
+        train_data_ir = train_data_ir[random_index]
+        train_label_vi = train_label_vi[random_index]
+        train_label_ir = train_label_ir[random_index]
         batch_size = self.config['batch_size']
 
         if self.config['is_train']:
